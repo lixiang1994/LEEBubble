@@ -192,105 +192,101 @@
             self.clickBubbleBlock();
         }
         
-    } else {
-        
-        //移动
-        
-        self.center = self.endPoint;
-        
-        CGFloat margin = 10.0f;
-        
-        //计算距离最近的边缘 吸附到边缘停靠
-        
-        CGFloat superwidth = self.superview.bounds.size.width;
-        
-        CGFloat superheight = self.superview.bounds.size.height;
-        
-        CGFloat endX = self.endPoint.x;
-        
-        CGFloat endY = self.endPoint.y;
-        
-        CGFloat topRange = endY - _edgeInsets.top;//上距离
-        
-        CGFloat bottomRange = (superheight - _edgeInsets.bottom) - endY;//下距离
-        
-        CGFloat leftRange = endX - _edgeInsets.left;//左距离
-        
-        CGFloat rightRange = (superwidth - _edgeInsets.right) - endX;//右距离
-        
-        
-        //比较上下左右距离 取出最小值
-        
-        CGFloat minRangeTB = topRange > bottomRange ? bottomRange : topRange;//获取上下最小距离
-        
-        CGFloat minRangeLR = leftRange > rightRange ? rightRange : leftRange;//获取左右最小距离
-        
-        CGFloat minRange = minRangeTB > minRangeLR ? minRangeLR : minRangeTB;//获取最小距离
-        
-        
-        //判断最小距离属于上下左右哪个方向 并设置该方向边缘的point属性
-        
-        CGPoint minPoint;
-        
-        if (minRange == topRange) {
-            
-            //上
-            
-            endX = endX - kOffSet - margin < _edgeInsets.left ? kOffSet + margin + _edgeInsets.left : endX;
-            
-            endX = endX + kOffSet + margin > (superwidth - _edgeInsets.right) ? (superwidth - _edgeInsets.right) - kOffSet - margin : endX;
-            
-            minPoint = CGPointMake(endX , _edgeInsets.top + kOffSet + margin);
-            
-        } else if(minRange == bottomRange){
-            
-            //下
-            
-            endX = endX - kOffSet - margin < _edgeInsets.left ? kOffSet + margin + _edgeInsets.left : endX;
-            
-            endX = endX + kOffSet + margin > (superwidth - _edgeInsets.right) ? (superwidth - _edgeInsets.right) - kOffSet - margin : endX;
-            
-            minPoint = CGPointMake(endX , (superheight - _edgeInsets.bottom) - kOffSet - margin);
-            
-        } else if(minRange == leftRange){
-            
-            //左
-            
-            endY = endY - kOffSet - margin < _edgeInsets.top ? kOffSet + margin + _edgeInsets.top : endY;
-            
-            endY = endY + kOffSet + margin > (superheight - _edgeInsets.bottom) ? (superheight - _edgeInsets.bottom) - kOffSet - margin : endY;
-            
-            minPoint = CGPointMake(_edgeInsets.left + kOffSet + margin , endY);
-            
-        } else if(minRange == rightRange){
-            
-            //右
-            
-            endY = endY - kOffSet - margin < _edgeInsets.top ? kOffSet + margin + _edgeInsets.top : endY;
-            
-            endY = endY + kOffSet + margin > (superheight - _edgeInsets.bottom) ? (superheight - _edgeInsets.bottom) - kOffSet - margin : endY;
-            
-            minPoint = CGPointMake((superwidth - _edgeInsets.right) - kOffSet - margin , endY);
-            
-        } else{
-            
-            minPoint = CGPointZero;
-        }
-        
-        
-        //添加吸附物理行为
-        
-        UIAttachmentBehavior *attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:self attachedToAnchor:minPoint];
-        
-        [attachmentBehavior setLength:1.0f];
-        
-        [attachmentBehavior setDamping:0.2f];//阻尼
-        
-        [attachmentBehavior setFrequency:4.0f];//频率
-        
-        [self.animator addBehavior:attachmentBehavior];
     }
     
+    self.center = self.endPoint;
+    
+    CGFloat margin = 10.0f;
+    
+    //计算距离最近的边缘 吸附到边缘停靠
+    
+    CGFloat superwidth = self.superview.bounds.size.width;
+    
+    CGFloat superheight = self.superview.bounds.size.height;
+    
+    CGFloat endX = self.endPoint.x;
+    
+    CGFloat endY = self.endPoint.y;
+    
+    CGFloat topRange = endY - _edgeInsets.top;//上距离
+    
+    CGFloat bottomRange = (superheight - _edgeInsets.bottom) - endY;//下距离
+    
+    CGFloat leftRange = endX - _edgeInsets.left;//左距离
+    
+    CGFloat rightRange = (superwidth - _edgeInsets.right) - endX;//右距离
+    
+    
+    //比较上下左右距离 取出最小值
+    
+    CGFloat minRangeTB = topRange > bottomRange ? bottomRange : topRange;//获取上下最小距离
+    
+    CGFloat minRangeLR = leftRange > rightRange ? rightRange : leftRange;//获取左右最小距离
+    
+    CGFloat minRange = minRangeTB > minRangeLR ? minRangeLR : minRangeTB;//获取最小距离
+    
+    
+    //判断最小距离属于上下左右哪个方向 并设置该方向边缘的point属性
+    
+    CGPoint minPoint;
+    
+    if (minRange == topRange) {
+        
+        //上
+        
+        endX = endX - kOffSet - margin < _edgeInsets.left ? kOffSet + margin + _edgeInsets.left : endX;
+        
+        endX = endX + kOffSet + margin > (superwidth - _edgeInsets.right) ? (superwidth - _edgeInsets.right) - kOffSet - margin : endX;
+        
+        minPoint = CGPointMake(endX , _edgeInsets.top + kOffSet + margin);
+        
+    } else if(minRange == bottomRange){
+        
+        //下
+        
+        endX = endX - kOffSet - margin < _edgeInsets.left ? kOffSet + margin + _edgeInsets.left : endX;
+        
+        endX = endX + kOffSet + margin > (superwidth - _edgeInsets.right) ? (superwidth - _edgeInsets.right) - kOffSet - margin : endX;
+        
+        minPoint = CGPointMake(endX , (superheight - _edgeInsets.bottom) - kOffSet - margin);
+        
+    } else if(minRange == leftRange){
+        
+        //左
+        
+        endY = endY - kOffSet - margin < _edgeInsets.top ? kOffSet + margin + _edgeInsets.top : endY;
+        
+        endY = endY + kOffSet + margin > (superheight - _edgeInsets.bottom) ? (superheight - _edgeInsets.bottom) - kOffSet - margin : endY;
+        
+        minPoint = CGPointMake(_edgeInsets.left + kOffSet + margin , endY);
+        
+    } else if(minRange == rightRange){
+        
+        //右
+        
+        endY = endY - kOffSet - margin < _edgeInsets.top ? kOffSet + margin + _edgeInsets.top : endY;
+        
+        endY = endY + kOffSet + margin > (superheight - _edgeInsets.bottom) ? (superheight - _edgeInsets.bottom) - kOffSet - margin : endY;
+        
+        minPoint = CGPointMake((superwidth - _edgeInsets.right) - kOffSet - margin , endY);
+        
+    } else{
+        
+        minPoint = CGPointZero;
+    }
+    
+    
+    //添加吸附物理行为
+    
+    UIAttachmentBehavior *attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:self attachedToAnchor:minPoint];
+    
+    [attachmentBehavior setLength:1.0f];
+    
+    [attachmentBehavior setDamping:0.2f];//阻尼
+    
+    [attachmentBehavior setFrequency:4.0f];//频率
+    
+    [self.animator addBehavior:attachmentBehavior];
 }
 
 #pragma mark - UIDynamicAnimatorDelegate
