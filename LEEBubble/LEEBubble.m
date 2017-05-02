@@ -30,7 +30,7 @@
 
 @implementation LEEBubble
 
--(void)dealloc{
+- (void)dealloc{
     
     _backgroundView = nil;
     
@@ -39,19 +39,17 @@
     _imageView = nil;
     
     _animator = nil;
-    
 }
 
 #pragma mark - 初始化
 
--(instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame{
     
     frame.size.width = kBubbleWidth;
     
     frame.size.height = kBubbleWidth;
     
     if (self = [super initWithFrame:frame]) {
-        
         
         //初始化背景视图
         
@@ -105,11 +103,9 @@
         //设置默认偏移
         
         self.edgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-        
     }
     
     return self;
-    
 }
 
 #pragma mark - 添加动画
@@ -118,12 +114,9 @@
     
     //开启呼吸动画
     
-    //[self HighlightAnimation];
-    
     if (![_backgroundView.layer animationForKey:@"BreathingAnimation"]) {
         
         [_backgroundView.layer addAnimation:[self BreathingAnimation] forKey:@"BreathingAnimation"];
-        
     }
     
     //添加气泡晃动效果
@@ -133,10 +126,9 @@
     [self AddAniamtionLikeGameCenterBubbleWithView:_imageBackgroundView];
     
     [self AddAniamtionLikeGameCenterBubbleWithView:_imageView];
-    
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
     //得到触摸点
     
@@ -158,12 +150,11 @@
     [self RemoveAniamtionLikeGameCenterBubbleWithView:_imageBackgroundView];
     
     [self RemoveAniamtionLikeGameCenterBubbleWithView:_imageView];
-    
 }
 
 //触摸移动
 
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     
     //得到触摸点
     
@@ -172,12 +163,11 @@
     //将触摸点赋值给touchView的中心点 也就是根据触摸的位置实时修改view的位置
     
     self.center = [startTouch locationInView:self.superview];
-    
 }
 
 //结束触摸
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     
     //得到触摸结束点
     
@@ -284,8 +274,6 @@
             
         } else{
             
-            minPoint = minPoint;
-            
         }
         
         
@@ -300,19 +288,18 @@
         [attachmentBehavior setFrequency:4.0f];//频率
         
         [self.animator addBehavior:attachmentBehavior];
-        
     }
     
 }
 
-#pragma mark ---UIDynamicAnimatorDelegate
+#pragma mark - UIDynamicAnimatorDelegate
 
--(void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator{
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator{
     
     
 }
 
--(void)dynamicAnimatorWillResume:(UIDynamicAnimator *)animator{
+- (void)dynamicAnimatorWillResume:(UIDynamicAnimator *)animator{
     
     //添加气泡晃动效果
     
@@ -321,15 +308,11 @@
     [self AddAniamtionLikeGameCenterBubbleWithView:_imageBackgroundView];
     
     [self AddAniamtionLikeGameCenterBubbleWithView:_imageView];
-    
 }
-
-
 
 #pragma mark - LazyLoading
 
-- (UIDynamicAnimator *)animator
-{
+- (UIDynamicAnimator *)animator{
     
     if (!_animator) {
         
@@ -340,11 +323,9 @@
         //设置代理
         
         _animator.delegate = self;
-        
     }
     
     return _animator;
-    
 }
 
 #pragma mark - BreathingAnimation 呼吸动画
@@ -374,13 +355,11 @@
     basicAnimation.fillMode = kCAFillModeForwards;
     
     return basicAnimation;
-    
-    
 }
 
 #pragma mark - 添加类似GameCenter的气泡晃动动画
 
--(void)AddAniamtionLikeGameCenterBubbleWithView:(UIView *)animationView{
+- (void)AddAniamtionLikeGameCenterBubbleWithView:(UIView *)animationView{
     
     CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     pathAnimation.calculationMode = kCAAnimationPaced;
@@ -421,33 +400,29 @@
     if (![animationView.layer animationForKey:@"circleAnimation"]) {
         
         [animationView.layer addAnimation:pathAnimation forKey:@"circleAnimation"];
-        
     }
     
     if (![animationView.layer animationForKey:@"scaleXAnimation"]) {
         
         [animationView.layer addAnimation:scaleX forKey:@"scaleXAnimation"];
-        
     }
     
     if (![animationView.layer animationForKey:@"scaleYAnimation"]) {
         
         [animationView.layer addAnimation:scaleY forKey:@"scaleYAnimation"];
-        
     }
     
 }
 
 #pragma mark - 移除类似GameCenter的气泡晃动动画
 
--(void)RemoveAniamtionLikeGameCenterBubbleWithView:(UIView *)animationView{
+- (void)RemoveAniamtionLikeGameCenterBubbleWithView:(UIView *)animationView{
     
     [animationView.layer removeAnimationForKey:@"circleAnimation"];
     
     [animationView.layer removeAnimationForKey:@"scaleXAnimation"];
     
     [animationView.layer removeAnimationForKey:@"scaleYAnimation"];
-    
 }
 
 @end
