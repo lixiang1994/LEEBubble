@@ -204,7 +204,7 @@
         
         CGFloat superwidth = self.superview.bounds.size.width;
         
-        CGFloat superheight = self.superview.bounds.size.height - kBubbleWidth;
+        CGFloat superheight = self.superview.bounds.size.height;
         
         CGFloat endX = self.endPoint.x;
         
@@ -250,7 +250,7 @@
             
             endX = endX + kOffSet + margin > (superwidth - _edgeInsets.right) ? (superwidth - _edgeInsets.right) - kOffSet - margin : endX;
             
-            minPoint = CGPointMake(endX , (superheight - _edgeInsets.bottom) - kOffSet - margin );
+            minPoint = CGPointMake(endX , (superheight - _edgeInsets.bottom) - kOffSet - margin);
             
         } else if(minRange == leftRange){
             
@@ -274,6 +274,7 @@
             
         } else{
             
+            minPoint = CGPointZero;
         }
         
         

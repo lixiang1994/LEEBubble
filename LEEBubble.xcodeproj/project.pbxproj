@@ -212,6 +212,7 @@
 				TargetAttributes = {
 					9BE65AE01D61A2F600B88D5B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = QCC328325S;
 					};
 					9BE65AF91D61A2F600B88D5B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -419,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QCC328325S;
 				INFOPLIST_FILE = LEEBubble/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEBubble;
@@ -430,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QCC328325S;
 				INFOPLIST_FILE = LEEBubble/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEBubble;
@@ -502,6 +505,7 @@
 				9BE65B101D61A2F600B88D5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9BE65B111D61A2F600B88D5B /* Build configuration list for PBXNativeTarget "LEEBubbleTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +514,7 @@
 				9BE65B131D61A2F600B88D5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9BE65B141D61A2F600B88D5B /* Build configuration list for PBXNativeTarget "LEEBubbleUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +523,7 @@
 				9BE65B161D61A2F600B88D5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
