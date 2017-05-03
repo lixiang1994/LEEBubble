@@ -84,8 +84,6 @@
         
         _imageView = [[UIImageView alloc]init];
         
-        _imageView.image = [UIImage imageNamed:@"image"];
-        
         _imageView.frame = CGRectMake(0, 0, 24, 24);
         
         _imageView.center = CGPointMake(kBubbleWidth / 2 , kBubbleWidth / 2);
@@ -106,6 +104,13 @@
     }
     
     return self;
+}
+
+- (void)setImage:(UIImage *)image{
+    
+    _image = image;
+    
+    self.imageView.image = image;
 }
 
 #pragma mark - 添加动画
@@ -187,11 +192,7 @@
         
         //调用点击Block
         
-        if (self.clickBubbleBlock) {
-            
-            self.clickBubbleBlock();
-        }
-        
+        if (self.clickBubbleBlock) self.clickBubbleBlock();
     }
     
     self.center = self.endPoint;

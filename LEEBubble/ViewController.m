@@ -33,6 +33,8 @@
     
     _bubble = [[LEEBubble alloc]initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 58, CGRectGetHeight(self.view.frame) - 123, 48, 48)];
     
+    _bubble.image = [UIImage imageNamed:@"image"];
+    
     _bubble.edgeInsets = UIEdgeInsetsMake(64, 0 , 0 , 0);
     
     [self.view addSubview:_bubble];

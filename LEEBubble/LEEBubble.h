@@ -11,6 +11,11 @@
 @interface LEEBubble : UIView
 
 /**
+ *  图片
+ */
+@property (nonatomic , strong ) UIImage *image;
+
+/**
  *  父视图中可移动范围边距 默认为 0 0 0 0 (气泡默认可活动范围为父视图大小)
  */
 @property (nonatomic , assign ) UIEdgeInsets edgeInsets;
