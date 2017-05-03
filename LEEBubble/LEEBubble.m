@@ -106,6 +106,16 @@
     return self;
 }
 
+- (void)setColor:(UIColor *)color{
+    
+    _color = color;
+    
+    self.backgroundView.backgroundColor = [color colorWithAlphaComponent:0.7f]
+    ;
+    
+    self.imageBackgroundView.backgroundColor = color;
+}
+
 - (void)setImage:(UIImage *)image{
     
     _image = image;

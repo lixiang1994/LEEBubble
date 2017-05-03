@@ -11,6 +11,11 @@
 @interface LEEBubble : UIView
 
 /**
+ *  颜色
+ */
+@property (nonatomic , strong ) UIColor *color;
+
+/**
  *  图片
  */
 @property (nonatomic , strong ) UIImage *image;
